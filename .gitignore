@@ -63,3 +63,15 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+# ud120 project
+testing/P1_testing/ud120-projects/*.pyc
+testing/P1_testing/ud120-projects/enron_mail_20110402.tgz
+testing/P1_testing/ud120-projects/enron_mail_20110402/
+testing/P1_testing/ud120-projects/enron_mail_20150507.tgz
+testing/P1_testing/ud120-projects/maildir/
+testing/P1_testing/ud120-projects/text_learning/your_word_data.pkl
+testing/P1_testing/ud120-projects/text_learning/your_email_authors.pkl
+testing/P1_testing/ud120-projects/my_classifier.pkl
+testing/P1_testing/ud120-projects/my_dataset.pkl
+testing/P1_testing/ud120-projects/my_feature_list.pkl
