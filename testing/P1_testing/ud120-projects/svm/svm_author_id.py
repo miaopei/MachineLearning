@@ -57,4 +57,4 @@ print "26: ", pred[26]
 print "50: ", pred[50]
 
 from collections import Counter
-print "svm(Chris(1), Sara(0)): ", Counter(pred)
+print "svm(Sara(0), Chris(1)): ", Counter(pred)
