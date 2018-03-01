@@ -20,3 +20,12 @@ import pickle
 enron_data = pickle.load(open("../final_project/final_project_dataset.pkl", "r"))
 
 
+print "len enron_data: ", len(enron_data)
+
+import pandas as pd
+
+pd_enron_data = pd.DataFrame(enron_data)
+
+print "features_of_enron_data: ", len(pd_enron_data)
+
+print enron_data[person_name]
