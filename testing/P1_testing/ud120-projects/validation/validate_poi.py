@@ -22,11 +22,26 @@ data_dict = pickle.load(open("../final_project/final_project_dataset.pkl", "r") 
 ### have a different feature list when you do the final project.
 features_list = ["poi", "salary"]
 
-data = featureFormat(data_dict, features_list)
+data = featureFormat(data_dict, features_list, sort_keys = '../tools/python2_lesson13_keys.pkl')
 labels, features = targetFeatureSplit(data)
 
 
 
 ### it's all yours from here forward!  
 
+
+from sklearn.model_selection import train_test_split
+from sklearn.tree import DecisionTreeClassifier
+
+
+clf = DecisionTreeClassifier().fit(features, labels)
+
+print "score: ", clf.score(features, labels)
+
+
+features_train, features_test, labels_train, labels_test = train_test_split(features, labels, test_size=0.3, random_state=42)
+
+clf = DecisionTreeClassifier().fit(features_train, labels_train)
+
+print "new_score: ", clf.score(features_test, labels_test)
 
