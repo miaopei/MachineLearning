@@ -1,7 +1,7 @@
 name: robot-env
 channels:
 - conda-forge
-- https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+- https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
 - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/menpo/
 - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
 - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
