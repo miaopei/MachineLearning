@@ -42,10 +42,10 @@ class Robot(object):
         """
         if self.testing:
             # TODO 1. No random choice when testing
-            pass
+            self.epsilon = 0
         else:
             # TODO 2. Update parameters when learning
-            pass
+            self.epsilon = self.epsilon
 
         return self.epsilon
 
@@ -55,7 +55,7 @@ class Robot(object):
         """
 
         # TODO 3. Return robot's current state
-        return None
+        return self.maze.sense_robot()
 
     def create_Qtable_line(self, state):
         """
