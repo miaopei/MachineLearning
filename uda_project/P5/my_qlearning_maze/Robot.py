@@ -87,7 +87,7 @@ class Robot(object):
         if self.learning:
             if is_random_exploration():
                 # TODO 6. Return random choose aciton
-                return random.choice(self.action)
+                return random.choice(self.valid_actions)
             else:
                 # TODO 7. Return action with highest q value
                 return max([(value, key) for key, value in self.Qtable[sense_state].items()])[1]
@@ -96,7 +96,7 @@ class Robot(object):
             return max([(value, key) for key, value in self.Qtable[sense_state].items()])[1]
         else:
             # TODO 6. Return random choose aciton
-            return random.choice(self.action)
+            return random.choice(self.valid_actions)
 
     def update_Qtable(self, r, action, next_state):
         """
