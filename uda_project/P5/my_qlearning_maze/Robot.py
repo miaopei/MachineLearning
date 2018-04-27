@@ -66,7 +66,9 @@ class Robot(object):
         # Qtable[state] ={'u':xx, 'd':xx, ...}
         # If Qtable[state] already exits, then do
         # not change it.
-        pass
+        if state != 'terminal':
+            if state not in self.Qtable:
+                self.Qtable[state] = {'u':0.0, 'd':0.0, 'r':0.0, 'l':0.0}
 
     def choose_action(self):
         """
@@ -77,28 +79,40 @@ class Robot(object):
             # TODO 5. Return whether do random choice
             # hint: generate a random number, and compare
             # it with epsilon
-            pass
+            if random.uniform(0, 1) < self.epsilon:
+                return False
+            else:
+                return True
 
         if self.learning:
             if is_random_exploration():
                 # TODO 6. Return random choose aciton
-                return None
+                return random.choice(self.action)
             else:
                 # TODO 7. Return action with highest q value
-                return None
+                return max([(value, key) for key, value in self.Qtable[sense_state].items()])[1]
         elif self.testing:
             # TODO 7. choose action with highest q value
+            return max([(value, key) for key, value in self.Qtable[sense_state].items()])[1]
         else:
             # TODO 6. Return random choose aciton
+            return random.choice(self.action)
 
     def update_Qtable(self, r, action, next_state):
         """
         Update the qtable according to the given rule.
         """
         if self.learning:
-            pass
             # TODO 8. When learning, update the q table according
             # to the given rules
+            self.create_Qtable_line(next_state)
+            q_predict = self.Qtable[self.state][action]
+
+            if next_state != 'terminal':
+                q_target = r + self.gamma * max([(value, key) for key, value in self.Qtable[next_state].items()])[0]
+            else:
+                q_target = r
+            self.Qtable[self.state][action] += slef.alpha * (q_target - q_predict)
 
     def update(self):
         """
