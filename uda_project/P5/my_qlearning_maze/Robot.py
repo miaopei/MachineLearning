@@ -90,10 +90,10 @@ class Robot(object):
                 return random.choice(self.valid_actions)
             else:
                 # TODO 7. Return action with highest q value
-                return max([(value, key) for key, value in self.Qtable[sense_state].items()])[1]
+                return max([(value, key) for key, value in self.Qtable[self.state].items()])[1]
         elif self.testing:
             # TODO 7. choose action with highest q value
-            return max([(value, key) for key, value in self.Qtable[sense_state].items()])[1]
+            return max([(value, key) for key, value in self.Qtable[self.state].items()])[1]
         else:
             # TODO 6. Return random choose aciton
             return random.choice(self.valid_actions)
@@ -112,7 +112,7 @@ class Robot(object):
                 q_target = r + self.gamma * max([(value, key) for key, value in self.Qtable[next_state].items()])[0]
             else:
                 q_target = r
-            self.Qtable[self.state][action] += slef.alpha * (q_target - q_predict)
+            self.Qtable[self.state][action] += self.alpha * (q_target - q_predict)
 
     def update(self):
         """
