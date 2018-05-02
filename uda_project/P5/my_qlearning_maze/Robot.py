@@ -46,6 +46,7 @@ class Robot(object):
         else:
             # TODO 2. Update parameters when learning
             self.epsilon *= self.epsilon0
+            self.epsilon = max(0.01, self.epsilon)
 
         return self.epsilon
 
@@ -104,7 +105,7 @@ class Robot(object):
         if self.learning:
             # TODO 8. When learning, update the q table according
             # to the given rules
-            q_predict = self.Qtable[next_state][action]
+            q_predict = self.Qtable[self.state][action]
 
             if next_state != 'terminal':
                 #q_target = r + self.gamma * max([(value, key) for key, value in self.Qtable[next_state].items()])[0]
