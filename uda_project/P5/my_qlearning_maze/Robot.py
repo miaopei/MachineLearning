@@ -112,6 +112,7 @@ class Robot(object):
                 q_target = r + self.gamma * max(self.Qtable[next_state].values())
             else:
                 q_target = r
+
             self.Qtable[self.state][action] += self.alpha * (q_target - q_predict)
 
     def update(self):

@@ -42,10 +42,11 @@ class Robot(object):
         """
         if self.testing:
             # TODO 1. No random choice when testing
-            self.epsilon = 0
+            self.epsilon = self.t
         else:
             # TODO 2. Update parameters when learning
-            self.epsilon = self.epsilon
+            self.epsilon *= self.epsilon0
+            self.epsilon = max(0.01, self.epsilon)
 
         return self.epsilon
 
@@ -66,9 +67,9 @@ class Robot(object):
         # Qtable[state] ={'u':xx, 'd':xx, ...}
         # If Qtable[state] already exits, then do
         # not change it.
-        if state != 'terminal':
-            if state not in self.Qtable:
-                self.Qtable[state] = {'u':0.0, 'd':0.0, 'r':0.0, 'l':0.0}
+        #if state not in self.Qtable:
+        #    self.Qtable[state] = {'u':0.0, 'd':0.0, 'r':0.0, 'l':0.0}
+        self.Qtable.setdefault(state, {a: 0.0 for a in self.valid_actions})
 
     def choose_action(self):
         """
@@ -79,10 +80,7 @@ class Robot(object):
             # TODO 5. Return whether do random choice
             # hint: generate a random number, and compare
             # it with epsilon
-            if random.uniform(0, 1) < self.epsilon:
-                return False
-            else:
-                return True
+            return random.random() < self.epsilon
 
         if self.learning:
             if is_random_exploration():
@@ -90,10 +88,12 @@ class Robot(object):
                 return random.choice(self.valid_actions)
             else:
                 # TODO 7. Return action with highest q value
-                return max([(value, key) for key, value in self.Qtable[self.state].items()])[1]
+                #return max([(value, key) for key, value in self.Qtable[self.state].items()])[1]
+                return max(self.Qtable[self.state], key=self.Qtable[self.state].get)
         elif self.testing:
             # TODO 7. choose action with highest q value
-            return max([(value, key) for key, value in self.Qtable[self.state].items()])[1]
+            #return max([(value, key) for key, value in self.Qtable[self.state].items()])[1]
+            return max(self.Qtable[self.state], key=self.Qtable[self.state].get)
         else:
             # TODO 6. Return random choose aciton
             return random.choice(self.valid_actions)
@@ -105,13 +105,14 @@ class Robot(object):
         if self.learning:
             # TODO 8. When learning, update the q table according
             # to the given rules
-            self.create_Qtable_line(next_state)
             q_predict = self.Qtable[self.state][action]
 
             if next_state != 'terminal':
-                q_target = r + self.gamma * max([(value, key) for key, value in self.Qtable[next_state].items()])[0]
+                #q_target = r + self.gamma * max([(value, key) for key, value in self.Qtable[next_state].items()])[0]
+                q_target = r + self.gamma * max(self.Qtable[next_state].values())
             else:
                 q_target = r
+
             self.Qtable[self.state][action] += self.alpha * (q_target - q_predict)
 
     def update(self):
