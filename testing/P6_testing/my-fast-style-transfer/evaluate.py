@@ -1,6 +1,8 @@
 from __future__ import print_function
 import sys
 sys.path.insert(0, 'src')
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL']='2'
 import transform, numpy as np, vgg, pdb, os
 import scipy.misc
 import tensorflow as tf
