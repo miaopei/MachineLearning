@@ -1,4 +1,4 @@
-name: dog-project
+name: dog-project-gpu
 channels:
 - damianavila82
 - defaults
