@@ -76,3 +76,8 @@ testing/P1_testing/ud120-projects/text_learning/your_email_authors.pkl
 testing/P1_testing/ud120-projects/my_classifier.pkl
 testing/P1_testing/ud120-projects/my_dataset.pkl
 testing/P1_testing/ud120-projects/my_feature_list.pkl
+
+# note
+note/Tensorflow/data/
+note/Tensorflow/MNIST_data/
+note/Tensorflow/__pycache__/

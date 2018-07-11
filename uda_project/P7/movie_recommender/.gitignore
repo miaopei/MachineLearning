@@ -99,3 +99,13 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+./*
+
+!./assets/
+!./requirements/
+!.gitignore
+!movie_recommender.ipynb
+!movie_recommender-linux.yml
+!README.md
+
