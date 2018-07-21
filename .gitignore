@@ -84,3 +84,12 @@ note/Tensorflow/__pycache__/
 
 uda_project/P7/RecommendedSystem/ml-1m/*
 uda_project/P7/RecommendedSystem/preprocess.p
+
+uda_project/P7/RecommendedSystem/checkpoint
+uda_project/P7/RecommendedSystem/movie_matrics.p
+uda_project/P7/RecommendedSystem/params.p
+uda_project/P7/RecommendedSystem/runs/*
+uda_project/P7/RecommendedSystem/save.data-00000-of-00001
+uda_project/P7/RecommendedSystem/save.index
+uda_project/P7/RecommendedSystem/save.meta
+uda_project/P7/RecommendedSystem/users_matrics.p
